@@ -54,26 +54,30 @@ const calculation = () => {
     if (operation === 'addition') {
         total = add();
     }
-    if (operation === 'subtract') {
+    else if (operation === 'subtract') {
         total = subtract();
     } 
-    if (operation === 'multiply') {
+    else if (operation === 'multiply') {
         total = multiply();
     }
-    if (operation === 'divide') {
+    else if (operation === 'divide') {
         total = divide();
     } 
+    if (operation === 'divide' && secondNumber === 0) {
+        totalDisplay.innerText === `Can't divide by 0`;
+        return;
+    }
     totalDisplay.innerHTML = total;
 };
 
 const clickOperation = (event) => {
-    firstNumber = parseInt(totalDisplay.innerText);
+    firstNumber = Number(totalDisplay.innerText);
     operation = event.target.id;
     totalDisplay.innerText = 0;
 };
 
 const clickEqualsButton = () => {
-    secondNumber = parseInt(totalDisplay.innerText);
+    secondNumber = Number(totalDisplay.innerText);
     calculation();
 };
 
